@@ -1,0 +1,541 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+html {
+  // all values defined here are mobile first
+  // bigger screens variants are inside @include responsive-x
+
+  // Text
+  --textH1HeroFontWeight: 500;
+  --textHeroDescriptionFontSize: 36px;
+
+  --textH2HeroFontWeight: 500;
+
+  // Button
+  --textButtonFontWeight: 400;
+  --textButtonFontSize: 16px;
+  --textButtonFontSizeMobile: 14px;
+  --textButtonLineHeight: 24px;
+
+  --textBlack: #000;
+  --textWhite: #fff;
+
+  // Paragraph
+  --textParagraphFontSize: 16px;
+
+  // H3
+  --textH3FontSize: 18px;
+  --textH3FontWeight: 500;
+  --textH3LineHeight: 22px;
+  --textParagraphLineHeight: 24px;
+
+  // stats
+  --textStatsFontSize: 17px;
+  --textStatsFontWeight: 600;
+  --textStatsLineHeight: 20.57px;
+
+  // Miscellaneous
+  --textParagraph2FontSize: 12px;
+  --textParagraph2BoldFontSize: 12px;
+  --textParagraphFontWeight: 400;
+  --textParagraphBoldFontWeight: 500;
+
+  // Hero banner featured content
+  --featuredCardTitleColor: var(--blackOnly);
+  --featuredCardParagraphColor: var(--textMutedColor);
+
+  // Theme common global variables
+  --borderRound: 50%;
+
+  /* BORDERS */
+
+  // Small, buttons
+  --borderTinyRadius: 2px;
+  --borderXSmallRadius: 4px;
+  // Status, lozenges
+  --borderSmallRadius: 6px;
+  // Buttons, tabs
+  --borderMediumRadius: 8px;
+  // Modals, cards, everything big
+  --borderLargeRadius: 10px;
+  //Images inside LargeRadius **To fill out properly**
+  --borderLargeRadiusImage: 9px;
+
+  // navbar
+  --navbarHeight: 72px;
+  --navbarSearchInputHeight: 50px;
+  --navbarSearchInputBorderWidth: 1px;
+
+  // badges
+  --listing-verified-badge-width: 16px;
+
+  // widths
+  --layout-max-width: 1440px;
+}
+
+html.dark,
+.manual-dark {
+  // gradients
+  --gradient-guidecard-stop-1: #2c212b;
+  --gradient-guidecard-stop-2: #23253e;
+
+  // Colors
+
+  // hero banner featured content
+  --featuredCardBackground: #f5e078;
+  --featuredCardFooterBackground: #5a5123;
+
+  // Button
+  --buttonPrimaryTextColor: #000;
+  --buttonSecondaryHoverColorRedesign: #1d2022;
+  --buttonPrimaryBackgroundColor: #38bdf8;
+  --buttonPrimaryHoverColor: #0ea5e9;
+  --buttonPrimaryPressedColor: #0284c7;
+  --buttonPrimaryBorderColor: #0ea5e9;
+  --buttonSecondaryTextColor: #fff;
+  --buttonSecondaryBackgroundColor: #18191b;
+  --buttonSecondaryHoverColor: #1d2022;
+  --buttonSecondaryPressedColor: #232729;
+
+  --buttonSecondaryBorderColor: #454b58;
+  --buttonTertiaryTextColor: #e8e8e8;
+  --buttonTertiaryTextHoverColor: #fff;
+  --buttonTertiaryBackgroundColor: #1e110f;
+  --buttonTertiaryHoverColor: #2f1b18;
+  --buttonTertiaryPressedColor: #25120f;
+  --buttonTertiaryBorderColor: #da554b;
+  --buttonDisabledBackgroundColor: #232a2e;
+  --buttonGreen: #20674f;
+  --buttonGreenBackground: #46a27a16;
+  --buttonGreenBorder: #46a27a;
+  --buttonDestructiveBackgroundColor: #1e110f;
+  --buttonDestructiveHoverColor: #2f1b18;
+  --buttonDestructivePressedColor: #25120f;
+  --buttonDestructiveBorderColor: var(--color-red-500);
+  --buttonDestructiveBorderHoverColor: var(--color-red-600);
+  --buttonDestructiveBorderPressedColor: var(--color-red-800);
+
+  // Text
+  --textPrimaryColor: #fff;
+  --textAlertColor: rgb(233, 233, 233);
+  --textDefaultColor: #ffffff;
+  --textMutedColor: #dfe5f3;
+  --textSubduedColor: var(--color-gray-400);
+  --textDisabledColor: var(--color-gray-500);
+  --textInvertedColor: var(--color-gray-900);
+  --textLinkColor: var(--color-blue-400);
+  --textLinkHoverColor: #5393f9;
+  --textPurpleColor: var(--color-purple-400);
+  --textGreenColor: var(--color-green-400);
+
+  --textLightPurpleColor: #9254f9;
+  --textDarkPurpleColor: #d3b8ff;
+  --textBadgePurpleColor: var(--color-purple-400);
+  --textLightLabelBackgroundColor: #3b2957;
+  --textIncreaseColor: #00811c;
+  --textDestructiveColor: var(--color-red-500);
+  --textWarningColor: #ffdb24;
+  --textRevertedColor: #000;
+  --textHeaderGreen: #ffffff;
+  --textParagraphGreen: #d2d8d6;
+  --textMutedColorOnGreen: #dfe5f3;
+  --textDiffNewColor: rgba(73, 244, 58, 0.44);
+  --textDiffOldColor: rgba(244, 83, 58, 0.44);
+  --textLightSubdued: #949fa9;
+  --textMobileDark: #ffffff;
+  --textLightPrimaryButton: #000000;
+  --textBadgeBackground: #5c6270;
+  --textGraphColor: #666;
+  --daoGoldGradientStart: #fbd647;
+  --daoGoldGradientMiddle: #d6b163;
+  --daoGoldGradientEnd: #fffea1;
+  --doubleXPGradientStart: #fbd647;
+  --doubleXPGradientMiddle: #d6b163;
+  --doubleXPGradientEnd: #fffea1;
+
+  --textDarkgreen: #31c48d;
+  --textDarkred: ##f05252;
+  // Background
+  --backgroundMainColor: #141414;
+  --backgroundPopoutColor: #18191b;
+  --backgroundHighlightColor: #1d2022;
+  --backgroundPopoutColorRgba: rgba(20, 20, 20, 0.9);
+  --backgroundSearchBarUnfocusedRgba: rgba(20, 20, 20, 0.5);
+  --backgroundPrimaryColorTransparent: #11111175;
+  --backgroundCellHighlightColor: #1d2022;
+  --backgroundSeparationColor: #1c1c1c;
+  --backgroundGreen: #113126;
+  --backgroundPlaceholder: #545454;
+  --foreGroundDisabled: rgba(255, 255, 255, 0.25);
+  --backgroundLightPurple: #58497070;
+  --backgroundDisabledInput: #f7f7f7;
+  --backgroundLightButtonDisable: #212121;
+  --backgroundPlaceholderColor: #272e3a;
+  --backgroundImageCountRgba: rgba(0, 0, 0, 0.5);
+  --backgroundAlertColor: #1d1b0f;
+  --backgroundSemiTransparent: rgba(158, 209, 255, 0.06);
+  --backgroundShadingGreen: #093030;
+  --backgroundShadingRed: #441b23;
+  --backgroundShadingGray: #232b39;
+
+  // Border
+  --borderPrimaryColor: #2f3641;
+  --borderSuccessColor: #2f8864;
+  --borderInfoColor: #7293e0;
+  --borderBrandColor: #5f4e00;
+  --borderGoldenColor: #f1cb7a;
+  --borderWarningColor: #f4c900;
+
+  // Label
+  --labelForSaleTextColor: #e5bc27;
+  --labelWarningTextColor: #e5bc27;
+  --labelForSaleBackgroundColor: #382e00;
+  --labelFailedTextColor: #ee6e6e;
+  --labelFailedBackgroundColor: #312727;
+  --labelConfirmedTextColor: #2ead7a;
+  --labelConfirmedBackgroundColor: #0f3426;
+  --labelInProgressTextColor: #acbee0;
+  --labelInProgressBackgroundColor: #333f54;
+  --labelLinkBackgroundColor: #192030;
+
+  // Icon
+  --iconLogoYellowColor: #ffc900;
+  --iconTwitterColor: #60a8ec;
+  --iconDiscordColor: #7b86fe;
+  --iconInstagramColor: #f952a3;
+  --iconRoyaltyColor: #ffb31a;
+  --iconBadgeColor: #ee6e6e;
+  --iconSuccessColor: #18a537;
+  --iconFailColor: #f54637;
+  --iconWarningColor: #ffa800;
+  --iconInfoColor: #7293e0;
+
+  --warningAlertColor: rgba(254, 235, 200, 0.3);
+  --warningAlertIconColor: #fbd38d;
+
+  // SVG fill color equivalent (Generated with online tool https://codepen.io/sosuke/pen/Pjoqqp)
+  --svgTextSubduedFilter: invert(71%) sepia(12%) saturate(295%)
+    hue-rotate(167deg) brightness(87%) contrast(86%);
+
+  // Graph
+  --graphBarColor: #25396f;
+
+  // Mint progress bar
+  --stripColor: rgba(172, 148, 250, 0.2);
+
+  // Common
+  --whiteOnly: #fff;
+  --blackOnly: #000;
+
+  // Elements
+
+  // Special
+  --tooltipZIndex: -10;
+
+  // Shadows
+  --boxShadowCard: 0 4px 20px 0 rgb(0 0 0 / 0.45);
+  --boxShadowModal: 0px 2px 20px 0px rgba(0, 0, 0, 0.25);
+  --boxShadowFilterBar: 0px 4px 30px 0px rgba(0, 0, 0, 0.3);
+  --boxShadowDropDown: 0px 4px 20px 0px rgba(0, 0, 0, 0.45);
+  --boxShadowTable: inset 0px -1px 0px #454b58;
+
+  // Moonpay
+  --moonPayColor: #9254f9;
+
+  // DAO
+  --goldenGradient: linear-gradient(
+    89.35deg,
+    #fbd647 1.12%,
+    #d6b163 48.95%,
+    #fffea1 97.85%
+  );
+
+  // Countdown
+  --countdownBackgroundColor: rgba(255, 255, 255, 0.08);
+  --countdownGradient: linear-gradient(
+    89.35deg,
+    #fbd647 1.12%,
+    #d6b163 48.95%,
+    #fffea1 97.85%
+  );
+
+  --loadingGradient: linear-gradient(90deg, #222 33%, #333 50%, #222 66%);
+
+  --fadeOutScrollViewportGradient: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 1) 100%
+  );
+
+  // Discord
+  --discordColor: #7b87ee;
+
+  // DAO
+  --daoYellow: #534500;
+  --daoBlue: #005376;
+
+  // Navbar profile button
+  --navbarProfileButtonBackground: rgba(158, 209, 255, 0.06);
+  --navbarMobileButtonBackground: rgba(17, 17, 17, 0.5);
+
+  --homepageHeroBannerMintDate: #ffdb24;
+
+  --homepageHeroBannerFeatureLabel: #ffdb24;
+
+  // shading
+  --shadingGreen: #093030;
+  --shadingPurple: #281b54;
+  --shadingBlue: #1a284f;
+  --shadingRed: #441b23;
+  --shadingYellow: #463b20;
+  --shadingGray: #232b39;
+  --shadingTeal: #014451;
+
+  // shadow
+  --shadowDefaultColor: #00000080;
+
+  // solid
+  --solidYellow: var(--color-yellow-400);
+  --solidOrange: var(--color-orange-400);
+  --solidPink: var(--color-pink-400);
+  --solidTeal: var(--color-teal-400);
+}
+
+html.light,
+.manual-light {
+  // gradients
+  --gradient-guidecard-stop-1: #ffe9fd;
+  --gradient-guidecard-stop-2: #e3e5fd;
+
+  // Colors
+
+  // hero banner featured content
+  --featuredCardBackground: #fdf2bb;
+  --featuredCardFooterBackground: #dacc85;
+
+  // Button
+  --buttonPrimaryTextColor: #000;
+  --buttonSecondaryHoverColorRedesign: rgba(0, 0, 0, 0.025);
+  --buttonPrimaryBackgroundColor: #ffdb24;
+  --buttonPrimaryHoverColor: #f6cf01;
+  --buttonPrimaryPressedColor: #f4c900;
+  --buttonPrimaryBorderColor: #caa600;
+  --buttonSecondaryTextColor: #000;
+  --buttonSecondaryBackgroundColor: #fff;
+  --buttonSecondaryHoverColor: #f9fafb;
+  --buttonSecondaryPressedColor: #f3f4f6;
+
+  --buttonSecondaryBorderColor: #d1daf1;
+  --buttonTertiaryTextColor: #202020;
+  --buttonTertiaryBackgroundColor: #fff3f3;
+  --buttonTertiaryHoverColor: #fff0e0;
+  --buttonTertiaryPressedColor: #ffd4d4;
+  --buttonTertiaryBorderColor: #ff6558;
+  --buttonDisabledBackgroundColor: #f3f4f6;
+  --buttonGreen: #325a4c;
+  --buttonGreenBackground: #46a27a16;
+  --buttonGreenBorder: #46a27a;
+  --buttonDestructiveBackgroundColor: #fff3f3;
+  --buttonDestructiveHoverColor: #ffe0e0;
+  --buttonDestructivePressedColor: #ffd4d4;
+  --buttonDestructiveBorderColor: var(--color-red-600);
+  --buttonDestructiveBorderHoverColor: var(--color-red-700);
+  --buttonDestructiveBorderPressedColor: var(--color-red-800);
+
+  // Text
+  --textPrimaryColor: #000;
+  --textAlertColor: #4c5964;
+  --textDefaultColor: var(--color-gray-900);
+  --textMutedColor: #363636;
+  --textSubduedColor: var(--color-gray-500);
+  --textDisabledColor: var(--color-gray-400);
+  --textInvertedColor: #ffffff;
+  --textLinkColor: var(--color-blue-500);
+  --textLinkHoverColor: #2270f7;
+  --textPurpleColor: var(--color-purple-500);
+  --textGreenColor: var(--color-green-500);
+  --textGraphColor: #666;
+
+  --textLightPurpleColor: #9254f9;
+  --textDarkPurpleColor: #9254f9;
+  --textBadgePurpleColor: var(--color-purple-800);
+  --textLightLabelBackgroundColor: #f7f2ff;
+  --textIncreaseColor: #00a424;
+  --textDestructiveColor: var(--color-red-600);
+  --textWarningColor: var(--color-yellow-700);
+  --textRevertedColor: #fff;
+  --textHeaderGreen: #0d4532;
+  --textParagraphGreen: #184f3b;
+  --textMutedColorOnGreen: #363636;
+  --textDiffNewColor: rgba(73, 244, 58, 0.44);
+  --textDiffOldColor: rgba(244, 83, 58, 0.44);
+  --textMobileDark: #5c6270;
+  --textLightPrimaryButton: #000000;
+  --textBadgeBackground: #5c6270;
+  --daoGoldGradientStart: #fbd647;
+  --daoGoldGradientMiddle: #d6b163;
+  --daoGoldGradientEnd: #fffea1;
+  --doubleXPGradientStart: #77590d;
+  --doubleXPGradientMiddle: #ae8c44;
+  --doubleXPGradientEnd: #766009;
+  --textDarkgreen: #31c48d;
+  --textDarkred: ##f05252;
+
+  // Background
+  --backgroundPopoutColor: #ffffff;
+  --backgroundPopoutColorRgba: rgba(255, 255, 255, 0.9);
+  --backgroundSearchBarUnfocusedRgba: rgba(255, 255, 255, 0.5);
+  --backgroundMainColor: #f9fafb;
+  --backgroundHighlightColor: #f3f4f6;
+  --backgroundPrimaryColorTransparent: #fcfcfc75;
+  --backgroundCellHighlightColor: #f4f7fa;
+  --backgroundSeparationColor: #f6f7f9;
+  --backgroundGreen: #a7ead3;
+  --backgroundPlaceholder: #a6a6a6;
+  --foreGroundDisabled: rgba(0, 0, 0, 0.25);
+  --backgroundLightPurple: #f7f2ff;
+  --backgroundDisabledInput: #f7f7f7;
+  --backgroundLightButtonDisable: #f7f7f7;
+  --backgroundPlaceholderColor: #eaecf0;
+  --backgroundImageCountRgba: rgba(0, 0, 0, 0.5);
+  --backgroundAlertColor: #fffbe3;
+  --backgroundSemiTransparent: rgba(0, 0, 0, 0.05);
+  --backgroundShadingGreen: #093030;
+  --backgroundShadingRed: #441b23;
+  --backgroundShadingGray: #232b39;
+
+  // Border
+  --borderPrimaryColor: #e5e7eb;
+  --borderSuccessColor: #2f8864;
+  --borderInfoColor: #5269a0;
+  --borderBrandColor: #ffdb24;
+  --borderGoldenColor: #f1cb7a;
+  --borderWarningColor: #f4c900;
+
+  // Label
+  --labelForSaleTextColor: #9e7d00;
+  --labelWarningTextColor: #000;
+  --labelForSaleBackgroundColor: #fff6c6;
+  --labelFailedTextColor: #eb5757;
+  --labelFailedBackgroundColor: #ffeded;
+  --labelConfirmedTextColor: #287556;
+  --labelConfirmedBackgroundColor: #dff6ed;
+  --labelInProgressTextColor: #e0ebff;
+  --labelInProgressBackgroundColor: #71819b;
+  --labelLinkBackgroundColor: #ebeef6;
+
+  // Icon
+  --iconLogoYellowColor: #ffc900;
+  --iconTwitterColor: #499be9;
+  --iconDiscordColor: #7b86ee;
+  --iconInstagramColor: #f93995;
+  --iconRoyaltyColor: #ffa800;
+  --iconBadgeColor: #eb5757;
+  --iconSuccessColor: #18a537;
+  --iconFailColor: #f54637;
+  --iconWarningColor: #ffa800;
+  --iconInfoColor: #5269a0;
+
+  --warningAlertColor: #feebc8;
+  --warningAlertIconColor: #dd6b20;
+
+  --shadingGreen: var(--color-green-100);
+
+  // SVG fill color equivalent (Generated with online tool https://codepen.io/sosuke/pen/Pjoqqp)
+  --svgTextSubduedFilter: invert(35%) sepia($base-side-padding-md)
+    saturate(784%) hue-rotate(166deg) brightness(97%) contrast(99%);
+
+  // Graph
+  --graphBarColor: #c3d9ea;
+
+  // Mint progress bar
+  --stripColor: rgba(144, 97, 249, 0.2);
+
+  // Common
+  --whiteOnly: #fff;
+  --blackOnly: #000;
+
+  // Elements
+
+  // Special
+  --tooltipZIndex: 1;
+
+  // Shadows
+  --boxShadowCard: 0 4px 20px 0 rgb(209 218 241 / 0.25);
+  --boxShadowModal: 0px 4px 30px 0px rgba(82, 105, 160, 0.17);
+  --boxShadowFilterBar: 0px 4px 30px 0px rgba(112, 120, 141, 0.08);
+  --boxShadowDropDown: 0px 4px 30px 0px rgba(82, 105, 160, 0.14);
+  --boxShadowTable: inset 0px -1px 0px #d1daf1;
+
+  // Moonpay
+  --moonPayColor: #9254f9;
+
+  // DAO
+  --goldenGradient: linear-gradient(
+    89.35deg,
+    #fbd647 1.12%,
+    #dbd976 50%,
+    #d6b163 99%
+  );
+
+  // Countdown
+  --countdownBackgroundColor: rgba(0, 0, 0, 0.03);
+  --countdownGradient: linear-gradient(
+    89.35deg,
+    #77590d 1.12%,
+    #ae8c44 48.95%,
+    #766009 98.92%
+  );
+
+  --loadingGradient: linear-gradient(90deg, #f0f0f0 33%, #ddd 50%, #f0f0f0 66%);
+
+  --fadeOutScrollViewportGradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 1) 100%
+  );
+
+  // Discord
+  --discordColor: #7b87ee;
+
+  // DAO
+  --daoYellow: #ffefa1;
+  --daoBlue: #baeaff;
+
+  // Navbar profile button
+  --navbarProfileButtonBackground: rgba(0, 0, 0, 0.04);
+  --navbarMobileButtonBackground: rgba(255, 255, 255, 0.5);
+
+  --homepageHeroBannerMintDate: #9f580a;
+
+  --homepageHeroBannerFeatureLabel: #9f580a;
+
+  // shading
+  --shadingGreen: var(--color-green-100);
+  --shadingPurple: var(--color-purple-100);
+  --shadingBlue: var(--color-blue-100);
+  --shadingRed: var(--color-red-100);
+  --shadingYellow: var(--color-yellow-100);
+  --shadingGray: var(--color-gray-100);
+  --shadingTeal: var(--color-teal-100);
+
+  // shadow
+  --shadowDefaultColor: #1115401f;
+
+  // solid
+  --solidYellow: var(--color-yellow-400);
+  --solidOrange: var(--color-orange-400);
+  --solidPink: var(--color-pink-400);
+  --solidTeal: var(--color-teal-400);
+}

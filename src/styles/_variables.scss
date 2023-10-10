@@ -1,0 +1,47 @@
+$base: 480px; // base
+$sm: 600px; // small
+$md: 900px; // medium
+$lg: 1100px; // large
+$xl: 1400px; // extra large
+
+$base-side-padding-md: 10%;
+$base-side-padding-sm: 3%;
+
+$content-max-width: 1800px;
+
+@mixin responsive-base {
+  @media screen and (min-width: 200px) {
+    @content;
+  }
+}
+
+@mixin responsive-sm {
+  @media screen and (min-width: $base) {
+    @content;
+  }
+}
+
+@mixin responsive-md {
+  @media only screen and (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin responsive-lg {
+  @media only screen and (min-width: $md) {
+    @content;
+  }
+}
+
+@mixin responsive-xl {
+  @media only screen and (min-width: $lg) {
+    @content;
+  }
+}
+
+
+@mixin responsive-xxl {
+  @media only screen and (min-width: $xl) {
+    @content;
+  }
+}
