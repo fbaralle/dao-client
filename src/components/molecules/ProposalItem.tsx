@@ -85,7 +85,10 @@ const ProposalItem: React.FC<ProposalItemProps> = (data) => {
       {expanded && (
         <div className="mt-4 p-4 bg-gray-900 flex flex-col rounded text-gray-400 gap-2">
           {isLoading ? (
-            <Text>Loading proposal stats..</Text>
+            <div className="flex flex-row gap-4">
+              <Text className="text-sm">Loading proposal stats...</Text>
+              <LoadingSpinner />
+            </div>
           ) : (
             <div className="flex flex-col gap-2">
               <div className="flex flex-row gap-4 border-b-[1px] text-gray-400 border-gray-500 pb-2">

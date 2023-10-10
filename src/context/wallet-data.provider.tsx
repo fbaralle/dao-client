@@ -45,11 +45,12 @@ const WalletProvider: React.FC<{ children: ReactNode; [key: string]: any }> = ({
   const { data: chainStats, isLoading: isLoadingChainStats } = useQuery<any[]>({
     queryKey: ["network-data"],
     queryFn: getNetworkData,
-    staleTime: 60 * 1000, // 1 min.,
+    staleTime: 60 * 1000, // 1 min
     initialData: {
       chainId: undefined,
       gasPrice: "100000000",
     },
+    refetchInterval: 60 * 1000, // 1 min
   });
 
   const connectWallet = useCallback(async () => {

@@ -1,4 +1,4 @@
-## Governance Protocol
+## Governance Protocol Client App
 
 This is a demo portfolio frontend project of a DAO / Governance Protocol. That connects to the protocol through a Node/Nest.js API to optimise communication with the blockchain.
 
@@ -24,7 +24,7 @@ This is a demo portfolio frontend project of a DAO / Governance Protocol. That c
 
 ## Getting Started
 
-**IMPORTANT:** The client app connects to the blockchian through a service, so first it's necessary to set up and run the Nest.js server API `dao-protocol`
+**IMPORTANT:** The client app connects to the blockchian through a service, so first it's necessary to set up and run the Nest.js server API `dao-protocol` (repository)
 
 Create environment variables
 Protocol is deployed in Sepolia Testnet (`'sepolia'`)

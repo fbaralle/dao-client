@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useQuery } from "@tanstack/react-query";
 
 const BlockchainStats = () => {
-  const { chainStats, client, isLoadingChainStats } = useUserWallet();
+  const { chainStats, isLoadingChainStats } = useUserWallet();
 
   const color = chainStats ? "green-300" : "gray-300";
   const label = chainStats.name ? chainStats.name : "Not Connected";
