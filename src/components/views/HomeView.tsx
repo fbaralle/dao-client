@@ -8,7 +8,7 @@ import { useUserWallet } from "@/context/wallet-data.context";
 
 const HomeView = () => {
   const { userAddress } = useUserWallet();
-  const { modalOpen, setModalOpen } = useStore((state) => state.modal);
+  const { setModalOpen } = useStore((state) => state.modal);
   return (
     <main className="flex min-h-screen flex-col items-center mt-10 pb-20 px-[10%]">
       <HeaderMenu />

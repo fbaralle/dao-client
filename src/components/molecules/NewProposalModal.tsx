@@ -29,9 +29,8 @@ const MAX_DESCRIPTION_LENGTH = 400;
 
 const NewProposalModal = () => {
   const { userAddress } = useUserWallet();
-  const { modalOpen, modalStep, setModalOpen, setModalStep } = useStore(
-    (state) => state.modal
-  );
+  const { modalOpen, modalStep, setModalOpen, setModalStep, closeModal } =
+    useStore((state) => state.modal);
   const { getBuildProposalTx } = useContractActions();
 
   const onClose = () => {
@@ -91,6 +90,8 @@ const NewProposalModal = () => {
         newValue,
       });
 
+      console.log("onSubmitProposal", { txReceipt });
+      setModalStep(ProposalModalSteps.SUCCESS);
       setTxHash(txReceipt);
     } catch (e) {
       toast.error("Submit error");
@@ -185,7 +186,7 @@ const NewProposalModal = () => {
             variant="primary"
             disabled={isSubmitDisabled}
             onClick={(e) => handleSubmit(e)}
-            secondaryClick={() => setModalOpen(false)}
+            secondaryClick={closeModal}
             containerClassName="border-0 md:border-0 jusitfy-self-end self-end"
             buttonClassName="justify-center w-full"
           />

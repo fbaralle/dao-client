@@ -1,12 +1,4 @@
-import {
-  useCallback,
-  useMemo,
-  useState,
-  useEffect,
-  ReactComponentElement,
-  ChildContextProvider,
-  ReactNode,
-} from "react";
+import { useCallback, useMemo, useState, useEffect, ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
 import {
   selectedWalletDataDefaultState,
@@ -40,7 +32,6 @@ const WalletProvider: React.FC<{ children: ReactNode; [key: string]: any }> = ({
     address: undefined,
     balance: 0,
   });
-  // const [signer, setSigner] = useState<any>(undefined);
 
   const { data: chainStats, isLoading: isLoadingChainStats } = useQuery<any[]>({
     queryKey: ["network-data"],
@@ -56,14 +47,37 @@ const WalletProvider: React.FC<{ children: ReactNode; [key: string]: any }> = ({
   const connectWallet = useCallback(async () => {
     if (typeof window.ethereum !== "undefined") {
       try {
+        console.log("Connecting to chain", { chain });
+        if (chain === "hardhat") {
+          await (window.ethereum as any).request({
+            method: "wallet_addEthereumChain",
+            params: [
+              {
+                blockExplorerUrls: ["http://localhost:3000"],
+                iconUrls: [],
+                rpcUrls: ["http://127.0.0.1:8545"],
+                chainId: "0x7A69",
+                chainName: "Hardhat",
+                nativeCurrency: {
+                  name: "testEther",
+                  symbol: "tETH",
+                  decimals: 18,
+                },
+              },
+            ],
+          });
+        }
+
         const [account] = await (window.ethereum as any).request({
           method: "eth_requestAccounts",
         });
+
         const client = createWalletClient({
           account,
           chain: enabledChains[chain],
           transport: custom(window.ethereum as any),
         });
+
         const publicClient = createPublicClient({
           chain: enabledChains[chain],
           transport: custom(window.ethereum as any),
@@ -110,17 +124,6 @@ const WalletProvider: React.FC<{ children: ReactNode; [key: string]: any }> = ({
   useEffect(() => {
     // if (hasMetamask && !isConnected) connectWallet();
   }, [hasMetamask]);
-
-  useEffect(() => {
-    if (!!window?.ethereum) {
-      const client = createWalletClient({
-        account: "0x000",
-        chain: enabledChains[chain],
-        transport: custom(window.ethereum as any),
-      });
-      setSelectedWalletData(client);
-    }
-  }, []);
 
   const value: WalletData = useMemo(
     () => ({

@@ -1,8 +1,6 @@
 import { useUserWallet } from "@/context/wallet-data.context";
-import { getNetworkData } from "@/utils/helpers/governance";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useQuery } from "@tanstack/react-query";
 
 const BlockchainStats = () => {
   const { chainStats, isLoadingChainStats } = useUserWallet();

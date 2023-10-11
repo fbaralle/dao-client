@@ -1,5 +1,3 @@
-import { useUserWallet } from "@/context/wallet-data.context";
-import { Button } from "../atoms/Button";
 import BlockchainStats from "./BlockchainStats";
 import ConnectWalletButton from "./ConnectWalletButton";
 
