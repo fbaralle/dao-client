@@ -24,10 +24,15 @@ This is a demo portfolio frontend project of a DAO / Governance Protocol. That c
 
 ## Getting Started
 
+> **Hint:**<br />
+> The protocol is currently deployed on the Sepolia Testnet ('sepolia').
+> Setting up testing environments locally can be somewhat challenging.<br />
+> Therefore, I recommend using the existing deployment or another
+> real testnet to interact with the app without any issues.
+
 **IMPORTANT:** The client app connects to the blockchian through a service, so first it's necessary to set up and run the Nest.js server API `dao-protocol` (repository)
 
-Create environment variables
-Protocol is deployed in Sepolia Testnet (`'sepolia'`)
+Create environment variables.
 
 ```
 # .env
