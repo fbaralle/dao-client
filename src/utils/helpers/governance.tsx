@@ -44,3 +44,14 @@ export const getProposalById = async (proposalId: string) => {
     toast.error("Error fetching proposals. Try again later");
   }
 };
+
+export const getCurrentValue = async (proposalId: string) => {
+  try {
+    const { data: value } = await apiClient.get<{ value: string }>(
+      "governance/value"
+    );
+    return value;
+  } catch {
+    toast.error("Error fetching proposals. Try again later");
+  }
+};
