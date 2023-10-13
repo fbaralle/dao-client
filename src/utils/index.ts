@@ -1,3 +1,6 @@
+import { formatValue } from "react-currency-input-field";
+import { formatUnits } from "viem";
+
 export function truncateString(
   str: string,
   num: number,
@@ -16,3 +19,14 @@ export function truncateString(
     return str;
   }
 }
+
+export const formatTokenValue = (value: string | number | undefined) => {
+  if (!value || (typeof value !== "number" && typeof value !== "string")) {
+    return "--";
+  }
+
+  return formatValue({
+    value: formatUnits(BigInt(value), 18),
+    decimalSeparator: ",",
+  });
+};

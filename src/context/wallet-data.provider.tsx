@@ -9,7 +9,6 @@ import { createWalletClient, createPublicClient, custom, Chain } from "viem";
 import { sepolia, mainnet, localhost, hardhat } from "viem/chains";
 import toast from "react-hot-toast";
 import { getNetworkData } from "@/utils/helpers/governance";
-import { ChildNode } from "postcss";
 
 const enabledChains: { [key: string]: Chain } = {
   sepolia,
@@ -34,14 +33,16 @@ const WalletProvider: React.FC<{ children: ReactNode; [key: string]: any }> = ({
   });
 
   const { data: chainStats, isLoading: isLoadingChainStats } = useQuery<any[]>({
-    queryKey: ["network-data"],
+    queryKey: ["network-data", hasMetamask],
     queryFn: getNetworkData,
-    staleTime: 60 * 1000, // 1 min
+    staleTime: 1000, // 1 min
     initialData: {
       chainId: undefined,
       gasPrice: "100000000",
+      currentBlock: null,
     },
-    refetchInterval: 60 * 1000, // 1 min
+    refetchInterval: (data: any) =>
+      !!data?.chainId ? 5 * 60 * 1000 : 5 * 1000, // 1 min
   });
 
   const connectWallet = useCallback(async () => {

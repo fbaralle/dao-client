@@ -19,10 +19,11 @@ export interface Proposal {
 export interface BuildProposalTxResponse {
   unsigned_tx: string;
   is_serialized: boolean;
+  estimated_gas: string;
 }
 
 const useContractActions = () => {
-  const { client, userAddress, chainStats } = useUserWallet();
+  const { client, publicClient, userAddress, chainStats } = useUserWallet();
 
   const getBuildProposalTx = async (proposal: Proposal) => {
     const { data } = await apiClient.post<BuildProposalTxResponse>(
@@ -40,20 +41,17 @@ const useContractActions = () => {
       gasPrice: BigInt(chainStats.gasPrice),
     });
 
-    const signedTxReceipt = await client.sendTransaction(request);
+    const signedTxHash = await client.sendTransaction(request);
 
-    return signedTxReceipt;
+    await publicClient.waitForTransactionReceipt({ hash: signedTxHash });
+
+    return signedTxHash;
   };
 
   const getBuildVoteProposalTx = async (
     proposalId: string,
     voteWay: VoteWay
   ) => {
-    console.log("vote", {
-      proposalId,
-      voteWay,
-    });
-
     const { data } = await apiClient.post<BuildProposalTxResponse>(
       "/governance/build-tx/vote",
       {
@@ -72,14 +70,71 @@ const useContractActions = () => {
       gasPrice: BigInt(chainStats.gasPrice),
     });
 
-    const signedTxReceipt = await client.sendTransaction(request);
+    const signedTxHash = await client.sendTransaction(request);
 
-    return signedTxReceipt;
+    await publicClient.waitForTransactionReceipt({ hash: signedTxHash });
+
+    return signedTxHash;
+  };
+
+  const getBuildQueueProposalTx = async (proposalId: string) => {
+    const { data } = await apiClient.post<BuildProposalTxResponse>(
+      "/governance/build-tx/queue",
+      {
+        proposalId,
+      }
+    );
+
+    const parsedTx = ethers.utils.parseTransaction(data.unsigned_tx);
+
+    const request = await client.prepareTransactionRequest({
+      account: userAddress,
+      to: parsedTx.to as Address,
+      value: BigInt("0"),
+      data: parsedTx.data as `0x${string}`,
+      gasPrice: BigInt(chainStats.gasPrice),
+      gas: BigInt(data.estimated_gas),
+    });
+
+    const signedTxHash = await client.sendTransaction(request);
+
+    await publicClient.waitForTransactionReceipt({ hash: signedTxHash });
+
+    return signedTxHash;
+  };
+
+  const getBuildExecuteProposalTx = async (proposalId: string) => {
+    const { data } = await apiClient.post<BuildProposalTxResponse>(
+      "/governance/build-tx/execute",
+      {
+        proposalId,
+      }
+    );
+
+    const parsedTx = ethers.utils.parseTransaction(data.unsigned_tx);
+
+    const request = await client.prepareTransactionRequest({
+      account: userAddress,
+      to: parsedTx.to as Address,
+      value: BigInt("0"),
+      data: parsedTx.data as `0x${string}`,
+      gasPrice: BigInt(chainStats.gasPrice),
+      gas: data.estimated_gas ? BigInt(data.estimated_gas) : undefined,
+      maxFeePerGas: undefined,
+    });
+
+    const signedTxHash = await client.sendTransaction(request);
+
+    await publicClient.waitForTransactionReceipt({ hash: signedTxHash });
+
+    return signedTxHash;
   };
 
   return {
     getBuildProposalTx,
     getBuildVoteProposalTx,
+    getBuildQueueProposalTx,
+    getBuildExecuteProposalTx,
   };
 };
 

@@ -4,6 +4,7 @@ import {
   Address,
   Chain,
   ParseAccount,
+  PublicClient,
   Transport,
   WalletClient,
 } from "viem";
@@ -14,6 +15,7 @@ export interface WalletData {
     Chain,
     ParseAccount<Account | Address | undefined>
   >;
+  publicClient: PublicClient<Transport, Chain>;
   userAddress: Address;
   balance: string | number | bigint;
   isLoadingWallet: boolean;
